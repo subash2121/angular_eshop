@@ -1,0 +1,53 @@
+<h1>Shopping Cart</h1>
+<div *ngIf="shoppingCartItemCount!=null" class="row col-12">
+    <p>
+        You have {{ shoppingCartItemCount }} items in your Shopping Cart.
+        <button
+    *ngIf="isEmpty()"
+    (click)="clearCart()"
+    class="btn btn-warning btn-sm">Clear Shopping Cart</button>
+
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th style="width: 40%;">Product</th>
+                <th class="text-xs-center" style="width: 45%;">Quantity</th>
+                <th style="width: 15%;" class="text-xs-right" >Price</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="cd!=null">
+            <ng-container *ngFor="let productId of item" >
+            <tr class="items" *ngIf="cd.items[productId].quantity>0">
+                <td style="width: auto"><div [style.backgroundImage]="'url(' + cd.items[productId].product.imageUrl+ ')'" class="thumbnail"></div></td>
+                <td style="width: 15%;" ><div class="text-wrap">{{cd.items[productId].product.title}}</div></td>
+                <td style="width: 50%;">
+                    <product-quantity [product]="cd.items[productId].product" [shopping-cart]="cd">
+
+                    </product-quantity>
+                </td>
+                <td style="width: 15%;" class="mx-auto" style="padding-left: 2rem;">
+                    {{cd.items[productId].product.price * cd.items[productId].quantity | currency:'INR':true}}
+                </td>
+            </tr>
+        </ng-container>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th style="padding-left: 2rem;">{{total|currency:'INR':true}}</th>
+            </tr>
+        </tfoot>
+    </table>
+    
+</div>
+<a 
+ *ngIf="isEmpty()"
+ routerLink='/check-out'
+class="btn btn-primary">Check Out</a>
+<p></p>
+
+    <h1 *ngIf="shoppingCartItemCount==null" class="text-center"><b> Cart is Empty</b></h1>

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3f2fd;">
+    <div class="container" bis_skin_checked="1">
+      <a class="navbar-brand" routerLink="/">G</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation" (click)="isMenuCollapsed=!isMenuCollapsed">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarsExample03" bis_skin_checked="1">
+        <ul class="navbar-nav mb-2 mb-sm-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/shopping-cart" (click)="isMenuCollapsed = true">Shopping Cart
+              <span class="badge rounded-pill bg-warning text-dark">{{shoppingCartItemCount}}</span>
+            </a>
+            
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto user">
+                   
+          <li *ngIf="!(auth.user$)" class="nav-item justify-content-end">
+            <a class="nav-link" routerLink="/login" (click)="isMenuCollapsed = true">Login</a>
+          </li>
+          
+          <li ngbDropdown *ngIf="auth.user$" class="nav-item dropdown justify-content-end">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ auth.user$.displayName}}
+            </a>
+            <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown03">
+              <li><a class="dropdown-item" routerLink="/my/orders" (click)="isMenuCollapsed = true">My Orders</a></li>
+              <ng-container *ngIf="admin">
+                <li><a class="dropdown-item" routerLink="/admin/orders" (click)="isMenuCollapsed = true">Manage Orders</a></li>
+                <li><a class="dropdown-item" routerLink="/admin/products" (click)="isMenuCollapsed = true">Manage Products</a></li>
+              </ng-container>
+              <li><a class="dropdown-item" (click)="logout()">Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,8 @@
+.list-group{
+    margin-top: 10px;
+}
+.sticky-offset {
+    top: 80px;
+    position: sticky;
+}
+

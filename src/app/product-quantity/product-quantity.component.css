@@ -1,0 +1,16 @@
+.minus{
+    width: 2.5rem;
+    height: auto;
+}
+.plus{
+    width: 2.5rem;
+    height: auto;
+}
+.col{
+    padding-left: 0.8rem;
+    padding-right: 0px;
+    text-align: center;
+}
+.col-2{
+    padding: 0px;
+}

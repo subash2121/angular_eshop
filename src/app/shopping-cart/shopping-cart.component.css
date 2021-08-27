@@ -1,0 +1,29 @@
+items{
+    width: auto;
+}
+table {
+    text-align: center;
+  }
+.thumbnail{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    background-size: cover;
+}
+product-quantity{
+    width: auto;
+}
+td{
+    padding-right:0px ;
+    padding-left: 0px;
+}
+img{
+    padding-left: auto;
+}
+.text-wrap{
+    height: 4rem;
+    padding-right: 0.8rem;
+}
+.alert{
+    text-align: center;
+}

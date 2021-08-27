@@ -1,0 +1,64 @@
+
+<h2>Shipping</h2>
+<div class="row">
+  <div class="col-5">
+    <form #f="ngForm">
+      <div class="form-group">
+        <label for="">Name</label>
+        <input #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+          <div *ngIf="name.errors!.required">Name is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Address</label>
+        <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="shipping.addressLine1" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="addressLine1.touched && addressLine1.invalid">
+          <div *ngIf="addressLine1.errors!.required">Address Line 1 is required.</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="">City</label>
+        <input #city="ngModel" name="city" [(ngModel)]="shipping.city" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+          <div *ngIf="city.errors!.required">City is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Mail Id</label>
+        <input #mailId="ngModel" [pattern]="emailPattern" name="mailId" [(ngModel)]="shipping.mailId" type="text" class="form-control"required>
+        <div class="alert alert-danger" *ngIf="mailId.touched && mailId.invalid">
+          <div *ngIf="mailId.errors!.required">Mail Id is required.</div>
+          <div *ngIf="mailId.errors!.pattern && !mailId.errors!.required">   
+            Enter a valid email id  
+          </div>
+        </div>
+        
+      </div>
+      <div class="form-group">
+        <label for="">Phone Number</label>
+        <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">+91</span>
+        </div>
+        <input #phone="ngModel" name="phone" [(ngModel)]="shipping.phone" type="text" [pattern]="mobNumberPattern" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
+          <div *ngIf="phone.errors!.required">Phone Number is required.</div>
+          <div *ngIf="phone.errors!.pattern && !phone.errors!.required">  
+            Mobile number not valid.  
+          </div> 
+        </div>
+        </div>
+      </div>
+      <button 
+      [disabled]="!f.valid"
+      *ngIf="showActions"
+        (click)="placeOrder()"
+        class="btn btn-primary">Place Order</button>
+    </form>
+  </div>
+  <div *ngIf="showActions" class="col-6">
+    <shopping-cart-summary></shopping-cart-summary>
+  </div>
+</div>
