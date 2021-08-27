@@ -1,6 +1,8 @@
 # Gshop
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
+currently hosted in firebase:https://giftshop-3cf62.web.app/
+mail your mail id to subasha@student.tce.edu to get admin privileges to edit products,orders
 
 ## Development server
 
